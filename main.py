@@ -32,7 +32,7 @@ layout = [
     [sg.Text("Columna de fecha"), sg.Combo(columnas, key="columna_fecha")],
     [sg.Text("Columna de ventas"), sg.Combo(columnas, key="columna_ventas")],
     [sg.Text("Columna de tipo de producto"), sg.Combo(columnas, key="columna_tipo_producto")],
-    [sg.Text("Periodos de pronóstico"), sg.Input(key="periodos_pronostico")],
+    [sg.Text("Periodos de pronóstico"), sg.Spin([i for i in range(1, 100)], key="periodos_pronostico")],
     [sg.Text("Frecuencia de pronóstico"), sg.Combo(["Años", "Meses"], key="frecuencia_pronostico")],
     [sg.Button("Siguiente")]
 ]
