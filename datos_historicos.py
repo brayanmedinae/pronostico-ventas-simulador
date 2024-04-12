@@ -43,3 +43,12 @@ class DatosHistoricos:
         self.con.close()
         return df[columna_tipo_producto].tolist()
 
+
+    def get_todas_las_columnas(self):
+        self.con = sqlite3.connect("datos_historicos.db")
+        self.cur = self.con.cursor()
+        query = "PRAGMA table_info(datos_historicos);"
+        df = pd.read_sql_query(query, self.con)
+        self.cur.close()
+        self.con.close()
+        return df['name'].tolist()
