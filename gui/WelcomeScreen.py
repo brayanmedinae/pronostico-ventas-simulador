@@ -1,6 +1,6 @@
 import customtkinter as ctk
 import gui.ConfigurationScreen
-from PIL import Image, ImageTk
+from PIL import Image
 
 class WelcomeScreen(ctk.CTkFrame):
     def __init__(self, parent):
@@ -12,8 +12,7 @@ class WelcomeScreen(ctk.CTkFrame):
         label = ctk.CTkLabel(self, text="Bienvenido", font=("Helvetica", 24))
         label.pack(padx=20, pady=20)
         start_button = ctk.CTkButton(self, text="Iniciar simulación", command=lambda: self.go_to(gui.ConfigurationScreen.ConfigurationScreen))
-        logo = Image.open("logo.png").resize((100, 100))
-        logo = ImageTk.PhotoImage(logo)
+        logo = ctk.CTkImage(light_image=Image.open("logo.png"), dark_image=Image.open("logo.png"), size=(200, 200))
         logo_label = ctk.CTkLabel(self, image=logo, text="")
         logo_label.pack(padx=20, pady=20)
         start_button.pack(padx=20, pady=20)
