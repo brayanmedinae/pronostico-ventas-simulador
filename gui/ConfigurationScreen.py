@@ -18,7 +18,7 @@ class ConfigurationScreen(ctk.CTkFrame):
         import_button.pack(padx=20, pady=20)
         back_button = ctk.CTkButton(self, text="Volver", command=lambda: self.go_to(gui.WelcomeScreen.WelcomeScreen))
         back_button.pack(padx=20, pady=20)
-        self.next_button = ctk.CTkButton(self, text="Siguiente", command=lambda: self.go_to(gui.ParameterScreen.ParameterScreen), state="disabled")
+        self.next_button = ctk.CTkButton(self, text="Siguiente", command=lambda: self.go_to(gui.ParameterScreen.ParameterScreen))
         self.next_button.pack(padx=20, pady=20)
     
     def select_file(self):
