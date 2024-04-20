@@ -4,6 +4,9 @@ from pronostico import Pronostico
 from datos_historicos import DatosHistoricos
 import configparser
 from CTkTable import CTkTable
+from tkinter import filedialog
+from openpyxl import Workbook
+
 
 class VisualizationScreen(ctk.CTkTabview):
     def __init__(self, parent):
@@ -83,7 +86,7 @@ class VisualizationScreen(ctk.CTkTabview):
 
         value = self.pronostico.table()
 
-        export_button = ctk.CTkButton(scrollable_frame, text="Exportar", command=lambda: print("Exportar"))
+        export_button = ctk.CTkButton(scrollable_frame, text="Exportar", command=lambda: self.export(value))
         export_button.pack()
         self.table = CTkTable(scrollable_frame, values=value)
         window.title("Pronóstico para las ventas de un producto")
@@ -101,13 +104,28 @@ class VisualizationScreen(ctk.CTkTabview):
         self.pronostico.metodo_minimos_cuadrados()
 
         value = self.pronostico.table()
-        
-        export_button = ctk.CTkButton(scrollable_frame, text="Exportar", command=lambda: print("Exportar"))
+
+        export_button = ctk.CTkButton(scrollable_frame, text="Exportar", command=lambda: self.export(value))
         export_button.pack()
         self.table = CTkTable(scrollable_frame, values=value)
         window.title("Pronóstico para todas las ventas")
 
         self.table.pack(expand=True, fill="both")
+
+    def export(self, table):
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".xlsx",
+            filetypes=[("Excel files", "*.xlsx")],
+            title="Exportar",
+            initialfile="pronostico.xlsx"
+        )
+        if file_path:
+            wb = Workbook()
+            ws = wb.active
+            for i, row in enumerate(table):
+                for j, value in enumerate(row):
+                    ws.cell(row=i + 1, column=j + 1, value=value)
+            wb.save(file_path)
 
     def go_to(self, frame):
         self.destroy()
