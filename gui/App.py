@@ -1,5 +1,5 @@
 from tkinter import ttk
-from gui.WelcomeScreen import WelcomeScreen
+import gui.WelcomeScreen
 
 class App(ttk.Frame):
     def __init__(self):
@@ -7,4 +7,4 @@ class App(ttk.Frame):
         self.master.title("Simulador de pronóstico de ventas")
         self.master.geometry("800x600")
 
-        self.welcome = WelcomeScreen(self.master)
+        self.welcome = gui.WelcomeScreen.WelcomeScreen(self.master)
