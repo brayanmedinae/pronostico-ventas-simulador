@@ -52,6 +52,10 @@ class Pronostico:
         p = self.prededir(fechas[len(fechas)-1])
         plt.plot_date(p[self.COLUMNA_FECHAS], p[self.COLUMNA_VENTAS], 'g-', xdate=True, ydate=False)
 
+        plt.legend(['Datos históricos', 'Recta modelo', 'Predicción'])
+        plt.xlabel('Fecha')
+        plt.ylabel('Ventas')
+
         plt.show()
 
 
