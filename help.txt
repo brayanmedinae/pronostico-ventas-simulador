@@ -1,0 +1,9 @@
+Este simulador de pronóstico de ventas le permitirá realizar un pronóstico de ventas a partir de datos históricos. Para ello, siga los siguientes pasos:
+
+1. Importe los datos históricos en formato Excel (.xlsx) haciendo clic en el botón 'Importar'.
+
+2. Seleccione la columna de fecha, la columna de ventas y la columna de tipo de producto.
+
+3. Ingrese la cantidad de años a pronosticar y seleccione la frecuencia del pronóstico (años o meses).
+
+4. Haga clic en el botón 'Siguiente' para visualizar los resultados del pronóstico.
