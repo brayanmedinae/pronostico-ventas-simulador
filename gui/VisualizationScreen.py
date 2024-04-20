@@ -73,6 +73,9 @@ class VisualizationScreen(ctk.CTkTabview):
 
     def table_forecast_one_product(self, tipo_producto):
         window = ctk.CTkToplevel(self)
+        window.geometry("700x500")
+        scrollable_frame = ctk.CTkScrollableFrame(window)
+        scrollable_frame.pack(expand=True, fill="both")
         datos_historicos = self.db.get_datos_para_pronostico(self.columna_fecha, self.columna_ventas, self.columna_tipo_producto, tipo_producto)
 
         self.pronostico = Pronostico(datos_historicos, self.columna_fecha, self.columna_ventas, self.periods, self.frequency)
@@ -80,21 +83,28 @@ class VisualizationScreen(ctk.CTkTabview):
 
         value = self.pronostico.table()
 
-        self.table = CTkTable(window, values=value)
+        export_button = ctk.CTkButton(scrollable_frame, text="Exportar", command=lambda: print("Exportar"))
+        export_button.pack()
+        self.table = CTkTable(scrollable_frame, values=value)
         window.title("Pronóstico para las ventas de un producto")
 
         self.table.pack(expand=True, fill="both")
 
     def table_forecast_all_product(self):
         window = ctk.CTkToplevel(self)
+        window.geometry("700x500")
+        scrollable_frame = ctk.CTkScrollableFrame(window)
+        scrollable_frame.pack(expand=True, fill="both")
         datos_historicos = self.db.get_datos_para_pronostico_todas_ventas(self.columna_fecha, self.columna_ventas)
 
         self.pronostico = Pronostico(datos_historicos, self.columna_fecha, self.columna_ventas, self.periods, self.frequency)
         self.pronostico.metodo_minimos_cuadrados()
 
         value = self.pronostico.table()
-
-        self.table = CTkTable(window, values=value)
+        
+        export_button = ctk.CTkButton(scrollable_frame, text="Exportar", command=lambda: print("Exportar"))
+        export_button.pack()
+        self.table = CTkTable(scrollable_frame, values=value)
         window.title("Pronóstico para todas las ventas")
 
         self.table.pack(expand=True, fill="both")
