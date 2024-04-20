@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import filedialog
-import gui.VisualizationScreen
+import gui.ParameterScreen
 import gui.WelcomeScreen
 from datos_historicos import DatosHistoricos
 from tkinter.messagebox import showinfo
@@ -12,13 +12,13 @@ class ConfigurationScreen(ctk.CTkFrame):
         self.pack(expand=True, fill="both")
 
     def create_widgets(self):
-        label = ctk.CTkLabel(self, text="Datos históricos")
+        label = ctk.CTkLabel(self, text="Datos históricos", font=("Helvetica", 24))
         label.pack(padx=20, pady=20)
         import_button = ctk.CTkButton(self, text="Importar", command=self.select_file)
         import_button.pack(padx=20, pady=20)
         back_button = ctk.CTkButton(self, text="Volver", command=lambda: self.go_to(gui.WelcomeScreen.WelcomeScreen))
         back_button.pack(padx=20, pady=20)
-        self.next_button = ctk.CTkButton(self, text="Siguiente", command=lambda: self.go_to(gui.VisualizationScreen.VisualizationScreen), state="disabled")
+        self.next_button = ctk.CTkButton(self, text="Siguiente", command=lambda: self.go_to(gui.ParameterScreen.ParameterScreen), state="disabled")
         self.next_button.pack(padx=20, pady=20)
     
     def select_file(self):

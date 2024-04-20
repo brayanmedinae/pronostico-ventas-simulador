@@ -33,6 +33,14 @@ class DatosHistoricos:
         self.con.close()
         return df
 
+    def get_datos_para_pronostico_todas_ventas(self, columna_fecha, columna_ventas):
+        self.con = sqlite3.connect("datos_historicos.db")
+        self.cur = self.con.cursor()
+        query = f"SELECT {columna_fecha}, {columna_ventas} FROM datos_historicos;"
+        df = pd.read_sql_query(query, self.con)
+        self.cur.close()
+        self.con.close()
+        return df
 
     def get_tipos_productos(self, columna_tipo_producto):
         self.con = sqlite3.connect("datos_historicos.db")
