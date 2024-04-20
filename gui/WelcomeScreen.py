@@ -1,4 +1,3 @@
-from math import exp
 import customtkinter as ctk
 import gui.ConfigurationScreen
 from PIL import Image, ImageTk
