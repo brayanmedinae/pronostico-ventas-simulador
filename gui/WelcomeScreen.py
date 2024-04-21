@@ -12,7 +12,7 @@ class WelcomeScreen(ctk.CTkFrame):
         label = ctk.CTkLabel(self, text="Bienvenido", font=("Helvetica", 24))
         label.pack(padx=20, pady=20)
         start_button = ctk.CTkButton(self, text="Iniciar simulación", command=lambda: self.go_to(gui.ConfigurationScreen.ConfigurationScreen))
-        logo = ctk.CTkImage(light_image=Image.open("logo.png"), dark_image=Image.open("logo.png"), size=(200, 200))
+        logo = ctk.CTkImage(light_image=Image.open("./assets/logo.png"), dark_image=Image.open("./assets/logo.png"), size=(200, 200))
         logo_label = ctk.CTkLabel(self, image=logo, text="")
         logo_label.pack(padx=20, pady=20)
         start_button.pack(padx=20, pady=20)
@@ -22,7 +22,7 @@ class WelcomeScreen(ctk.CTkFrame):
         about_button.pack(padx=20, pady=20)
 
     def help_window(self):
-        help_text = open("help.txt", "r", encoding='utf-8').read()
+        help_text = open("./assets/help.txt", "r", encoding='utf-8').read()
         help_window = ctk.CTkToplevel(self.master)
         help_window.focus_force()
         help_window.title("Ayuda")
@@ -34,7 +34,7 @@ class WelcomeScreen(ctk.CTkFrame):
         help_window_text.pack(expand=True, fill="both")
 
     def about_window(self):
-        about_txt = open("about.txt", "r", encoding='utf-8').read()
+        about_txt = open("./assets/about.txt", "r", encoding='utf-8').read()
         about_window = ctk.CTkToplevel(self.master)
         about_window.focus_force()
         about_window.title("Acerca de")
