@@ -49,6 +49,8 @@ class ParameterScreen(ctk.CTkFrame):
     def restore_parameters(self):
         config = configparser.ConfigParser()
         config.read('parameters.ini')
+        if 'PARAMETERS' not in config:
+            return
         self.combo_box_fecha.set(config['PARAMETERS']['columna_fecha'])
         self.combo_box_ventas.set(config['PARAMETERS']['columna_ventas'])
         self.combo_box_tipo_producto.set(config['PARAMETERS']['columna_tipo_producto'])
